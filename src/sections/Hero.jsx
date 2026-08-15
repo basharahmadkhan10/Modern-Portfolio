@@ -157,14 +157,14 @@ export default function Hero() {
  animate={{ y: 0, opacity: 1 }}
  exit={{ y: -50, opacity: 0 }}
  transition={{ duration: 0.5, ease: "easeOut" }}
- className="text-5xl md:text-8xl lg:text-[7vw] font-serif uppercase tracking-tight leading-none whitespace-nowrap text-black dark:text-white"
+ className="text-3xl sm:text-5xl md:text-8xl lg:text-[7vw] font-serif uppercase tracking-tight leading-none whitespace-nowrap text-black dark:text-white"
  style={{ direction: nameIndex === 4 ? 'rtl' : 'ltr' }}
  >
  {names[nameIndex].text}
  </motion.h1>
  </AnimatePresence>
  </div>
- <h1 className="text-5xl md:text-8xl lg:text-[7vw] font-serif uppercase tracking-tight leading-none italic font-light text-accent">
+ <h1 className="text-3xl sm:text-5xl md:text-8xl lg:text-[7vw] font-serif uppercase tracking-tight leading-none italic font-light text-accent">
  Khan
  </h1>
 
