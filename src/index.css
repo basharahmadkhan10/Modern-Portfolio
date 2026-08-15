@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #f5f3eb;
+    --color-text: #111111;
+    --color-accent: #c67b35;
+    --color-surface: #e8e6e0;
+    --color-surface-border: rgba(0, 0, 0, 0.15);
+  }
+
+  .dark {
+    --color-bg: #050505;
+    --color-text: #eaeaea;
+    --color-accent: #d32f2f;
+    --color-surface: #111111;
+    --color-surface-border: rgba(255, 255, 255, 0.15);
+  }
+
+  body {
+    @apply bg-background text-text font-sans antialiased overflow-x-hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    cursor: none;
+    user-select: none;
+
+    background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+
+  html.dark body {
+    background-image: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .writing-vertical {
+    writing-mode: vertical-rl;
+  }
+  .hairline-border {
+    @apply border border-surface-border;
+  }
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .text-brown-gradient {
+    background-image: linear-gradient(to right, #8b5a2b, #5c3a21);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
