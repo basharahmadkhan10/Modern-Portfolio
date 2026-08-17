@@ -10,11 +10,11 @@ const projects = [
  title: 'ORION',
  subtitle: 'Autonomous AI Research Desk',
  desc: [
-   'Architected a production-grade multi-agent ecosystem using LangGraph, simulating a full-fledged institutional equity research desk.',
-   'Designed an adversarial debate architecture where a Bull Agent and Bear Agent autonomously fetch live Yahoo Finance data, formulate opposing investment thesis, and debate them in real-time.',
-   'Implemented a CIO Judge Agent that cross-examines the debate, applying strict kill-criteria to issue definitive INVEST/WATCH/PASS verdicts, supported by immutable evidence ledgers in MongoDB.'
+   'Architected a production-grade multi-agent ecosystem using LangGraph, simulating a full-fledged institutional equity research desk with a Bull Agent and Bear Agent fetching live Yahoo Finance data.',
+   'Designed an adversarial debate architecture where agents formulate opposing investment thesis, cross-examined by a CIO Judge Agent to issue definitive INVEST/WATCH/PASS verdicts based on strict kill-criteria.',
+   'Implemented an Immutable Evidence Ledger where every metric is assigned [E1]-[E12] IDs to ensure zero hallucination, alongside secure JWT Auth and PDF institutional tear-sheet exports.'
  ],
- tech: ['LangGraph JS', 'Gemini 1.5 Pro', 'React', 'MongoDB'],
+ tech: ['LangGraph JS', 'Gemini 1.5 Pro', 'React 18', 'Node.js', 'MongoDB Atlas'],
  image: '/assets/project_orion_new.png',
  link: 'https://orion-kappa-nine.vercel.app',
  github: 'https://github.com/basharahmadkhan10/Orion'
@@ -23,11 +23,11 @@ const projects = [
  title: 'CodeX Arena',
  subtitle: 'Real-Time 1v1 Coding Platform',
  desc: [
-   'Engineered a highly scalable competitive coding platform focusing on low-latency synchronized execution and real-time state management.',
-   'Leveraged Socket.io for instantaneous matchmaking, live opponent keystroke tracking, and state synchronization across client nodes.',
-   'Integrated a custom Monaco Editor paired with the JDoodle API to execute code against hidden test cases securely. Enforced strict anti-cheat mechanisms (tab-switch tracking, fullscreen enforcement) and a mathematical Elo-based ranking system for competitive integrity.'
+   'Engineered a real-time 1v1 competitive coding platform utilizing Socket.io for instantaneous matchmaking, synchronized duels, and state synchronization across client nodes.',
+   'Integrated a custom Monaco Editor paired with JDoodle/Judge0 APIs to execute code against hidden test cases. Implemented a dynamic Elo-based ranking system (Novice to Grandmaster) to ensure competitive integrity.',
+   'Developed strict, client-side anti-cheat mechanisms including fullscreen enforcement, visibilitychange polling for tab switching, and DOM-level copy/paste blocking.'
  ],
- tech: ['React', 'Socket.io', 'Node.js', 'JDoodle API'],
+ tech: ['React.js', 'Socket.io', 'Node.js', 'MongoDB', 'JDoodle API'],
  image: '/assets/project_codex_new.png',
  link: 'https://codex-arena.onrender.com',
  github: 'https://github.com/basharahmadkhan10/CodeX-Arena'
@@ -36,11 +36,11 @@ const projects = [
  title: 'CivicFix',
  subtitle: 'Community Issue Platform',
  desc: [
-   'Built a backend-heavy civic governance system revolving around a strict, state-machine-driven issue lifecycle (Reported -> Verified -> Assigned -> Resolved).',
-   'Designed an audit-first backend architecture ensuring that every status update creates an append-only immutable action log, establishing absolute transparency and operational accountability without hard-deletes.',
+   'Built a backend-heavy civic governance system revolving around a strict, state-machine-driven issue lifecycle (Reported -> Verified -> Assigned -> Resolved), preventing unauthorized state transitions.',
+   'Designed an audit-first backend architecture ensuring that every status update creates an append-only immutable action log, establishing absolute transparency without hard-deletes.',
    'Implemented robust JWT-based Role-Based Access Control (RBAC), strictly segregating privileges between Citizens, Field Officers, Supervisors, and Admins at the API gateway level.'
  ],
- tech: ['Node.js', 'MongoDB', 'JWT RBAC', 'React'],
+ tech: ['Node.js', 'Express.js', 'React.js', 'MongoDB', 'JWT RBAC'],
  image: '/assets/project_civicfix_new.png',
  link: 'https://civicfix-frontend02.onrender.com',
  github: 'https://github.com/basharahmadkhan10/CivicFix'
@@ -49,11 +49,11 @@ const projects = [
  title: 'LifeLink',
  subtitle: 'Privacy-First Blood Donation',
  desc: [
-   'Developed a scalable, privacy-first blood donation network designed to handle concurrent emergency broadcast operations.',
-   'Utilized MongoDB geospatial queries ($centerSphere) to broadcast real-time emergency requests instantly to eligible donors within a 50km radius of the incident.',
-   'Engineered critical medical constraint logic at the database level, enforcing strict cooldown periods to ensure donor safety and implementing transaction-level concurrency control to prevent multiple donors from accepting the same emergency.'
+   'Developed a scalable, privacy-first blood donation network. Contact details remain strictly hidden until a donor explicitly accepts an emergency request via the internal asynchronous messaging engine.',
+   'Utilized MongoDB geospatial queries ($centerSphere) to broadcast real-time emergency requests instantly to eligible donors within a 50km radius, combined with automated 90-day medical lockouts.',
+   'Engineered transaction-level concurrency control to prevent duplicate acceptances, automatically declining competing offers when a patient accepts a donor to prevent hospital overcrowding.'
  ],
- tech: ['Laravel 11', 'MongoDB Atlas', 'Tailwind', 'PHP'],
+ tech: ['Laravel 11', 'PHP 8.2+', 'MongoDB Atlas', 'TailwindCSS'],
  image: '/assets/project_lifelink_new.png',
  link: 'https://lifelink-1-h40a.onrender.com',
  github: 'https://github.com/basharahmadkhan10/LifeLink'
@@ -62,11 +62,11 @@ const projects = [
  title: 'Expense Tracker',
  subtitle: 'Flatmate Expense & Reconciliation',
  desc: [
-   'Architected a production-ready financial reconciliation engine capable of untangling complex, multi-currency shared expenses amongst dynamic friend groups.',
-   'Built advanced time-travel membership logic, strictly enforcing join/leave date boundaries to prevent users from being billed for expenses incurred when they were not active members.',
-   'Implemented an optimal debt settlement algorithm (Graph Traversal) that mathematically minimizes the total number of transactions required to settle all outstanding balances, alongside robust CSV import sanitization queues.'
+   'Architected a production-ready financial reconciliation engine capable of parsing messy historical CSV records and routing anomalous data through an oversight review queue before committing to the ledger.',
+   'Built advanced time-travel membership logic, strictly enforcing join/leave date boundaries per expense date to prevent users from being billed when they were not active flatmates.',
+   'Implemented an optimal debt settlement algorithm (Graph Traversal) that mathematically minimizes the total number of transactions required to settle balances, while transparently handling multi-currency conversions.'
  ],
- tech: ['Next.js 14', 'Prisma', 'PostgreSQL', 'Tailwind v4'],
+ tech: ['Next.js 14', 'TypeScript', 'Prisma', 'PostgreSQL (Neon)', 'Tailwind v4'],
  image: '/assets/project_expense_new.png',
  link: 'https://expense-tracker-eight-nu-64.vercel.app',
  github: 'https://github.com/basharahmadkhan10/ExpenseTracker'
@@ -75,11 +75,11 @@ const projects = [
  title: 'DevPrep',
  subtitle: 'AI Interview Preparation Platform',
  desc: [
-   'Developed an intelligent, context-aware interview preparation suite that bridges the gap between candidate resumes and raw job descriptions.',
-   'Integrated the Claude/Gemini API to programmatically parse PDF resumes against JD embeddings, generating precise match scoring, skill gap identification, and highly specific technical/behavioral interview questions.',
-   'Hardened the backend with production-grade security, including route-level rate limiting against brute-force attacks, secure Google OAuth 2.0 flows, and robust JWT access/refresh token rotation.'
+   'Developed an intelligent interview preparation suite that bridges the gap between candidate resumes and raw job descriptions using Google Gemini AI integrations.',
+   'Engineered a backend capable of parsing PDF resumes, generating precise match scoring, skill gap identification, and highly specific technical and behavioral interview study plans.',
+   'Hardened the backend with production-grade security, including route-level express-rate-limiting against brute-force attacks, secure Google OAuth 2.0 flows, and robust JWT access/refresh token rotation.'
  ],
- tech: ['React.js', 'Gemini AI', 'OAuth 2.0', 'Express'],
+ tech: ['React 18', 'Node.js', 'Express', 'MongoDB', 'Gemini AI'],
  image: '/assets/project_devprep_new.png',
  link: 'https://dev1prep.onrender.com',
  github: 'https://github.com/basharahmadkhan10/DevPrep'
@@ -88,11 +88,11 @@ const projects = [
  title: 'Bill Quill',
  subtitle: 'Professional Invoice Generator',
  desc: [
-   'Engineered a comprehensive financial SaaS application focused on automating client billing, reporting workflows, and transaction structuring.',
-   'Designed modular REST APIs in Express.js supporting highly dynamic invoice generation, including instant printable formats, secure XML data exports, and automated Excel monthly report synthesis.',
-   'Structured the MongoDB data modeling to ensure flawless relational tracking between clients, recurring line items, tax compliance configurations, and historical payments.'
+   'Engineered a full-stack financial SaaS application focused on automating client billing workflows and structured data storage for small-scale business operations.',
+   'Designed modular REST APIs in Express.js supporting highly dynamic invoice generation, including instant printable formats and secure XML data exports.',
+   'Structured the MongoDB data modeling to ensure flawless relational tracking between customers, recurring line items, and automated monthly Excel report synthesis.'
  ],
- tech: ['Node.js', 'Express', 'MongoDB', 'TailwindCSS'],
+ tech: ['Node.js', 'Express.js', 'MongoDB', 'HTML', 'TailwindCSS'],
  image: '/assets/project_billquill_new.png',
  link: 'https://bill-quill-frontend.onrender.com',
  github: 'https://github.com/basharahmadkhan10/Bill-Quill-frontend'
@@ -195,9 +195,9 @@ function ProjectCard({ project, index }) {
   <h4 className="text-2xl md:text-3xl font-serif text-accent font-black uppercase mb-1">{project.title}</h4>
   <p className="font-sans font-bold text-[10px] md:text-xs uppercase mb-4 md:mb-6 text-black dark:text-white pb-2 inline-block border-b border-black/10 dark:border-white/10">{project.subtitle}</p>
   
-  <div className="flex flex-col gap-3 md:gap-4 mb-6 md:mb-8">
+  <div className="flex flex-col gap-4 md:gap-6 mb-6 md:mb-8">
     {project.desc.map((paragraph, i) => (
-      <p key={i} className="text-xs md:text-sm font-sans font-medium text-black dark:text-white/90 leading-relaxed text-justify">
+      <p key={i} className="text-sm md:text-base font-sans font-medium text-black dark:text-white/90 leading-relaxed text-justify">
         {paragraph}
       </p>
     ))}
