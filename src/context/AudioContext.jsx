@@ -3,8 +3,8 @@ import { createContext, useContext, useState, useRef, useEffect } from 'react';
 const AudioContext = createContext();
 
 const PLAYLIST = [
-  '/assets/audio/bgm.mp3',
   '/assets/audio/bgm2.mp3',
+  '/assets/audio/bgm.mp3',
   '/assets/audio/bgm3.mp3'
 ];
 
@@ -72,8 +72,16 @@ export function AudioProvider({ children }) {
     }
   };
 
+  const prevTrack = (e) => {
+    if (e) e.stopPropagation();
+    setCurrentTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length);
+    if (!isPlaying) {
+      setIsPlaying(true);
+    }
+  };
+
   return (
-    <AudioContext.Provider value={{ isPlaying, toggleAudio, nextTrack, currentTrackIndex, totalTracks: PLAYLIST.length }}>
+    <AudioContext.Provider value={{ isPlaying, toggleAudio, nextTrack, prevTrack, currentTrackIndex, totalTracks: PLAYLIST.length }}>
       {children}
     </AudioContext.Provider>
   );

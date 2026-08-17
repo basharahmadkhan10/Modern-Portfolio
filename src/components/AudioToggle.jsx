@@ -2,10 +2,11 @@ import { useAudio } from '../context/AudioContext';
 import { motion } from 'framer-motion';
 
 export default function AudioToggle() {
-  const { isPlaying, toggleAudio, nextTrack, currentTrackIndex, totalTracks } = useAudio();
+  const { isPlaying, toggleAudio, nextTrack, prevTrack, currentTrackIndex, totalTracks } = useAudio();
 
   return (
-    <div className="fixed top-8 left-8 z-50 flex items-center gap-4">
+    <div className="fixed top-8 left-8 z-50 flex flex-col items-start gap-2">
+      {/* Sound Toggle */}
       <button
         onClick={toggleAudio}
         className="group bg-transparent hover:-translate-y-1 transition-transform flex items-center gap-2"
@@ -35,17 +36,20 @@ export default function AudioToggle() {
         </span>
       </button>
 
-      {/* Next Track Button */}
-      <button 
-        onClick={nextTrack}
-        className="opacity-50 hover:opacity-100 transition-opacity flex items-center gap-1 group"
-        title="Next Track"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-black dark:text-white group-hover:text-accent transition-colors"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
-        <span className="font-sans font-bold text-[8px] uppercase tracking-widest text-black dark:text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-          [{currentTrackIndex + 1}/{totalTracks}]
+      {/* Track Controls */}
+      <div className="flex items-center gap-3 ml-2 opacity-0 group-hover:opacity-100 hover:opacity-100 transition-opacity md:opacity-50">
+        <button onClick={prevTrack} className="text-black dark:text-white hover:text-accent transition-colors" title="Previous Track">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
+        </button>
+        
+        <span className="font-sans font-bold text-[8px] uppercase tracking-widest text-black dark:text-white whitespace-nowrap">
+          {currentTrackIndex + 1} / {totalTracks}
         </span>
-      </button>
+
+        <button onClick={nextTrack} className="text-black dark:text-white hover:text-accent transition-colors" title="Next Track">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+        </button>
+      </div>
     </div>
   );
 }
