@@ -9,7 +9,11 @@ const projects = [
  {
  title: 'ORION',
  subtitle: 'Autonomous AI Research Desk',
- desc: 'Multi-agent LangGraph system mimicking institutional equity research. A Bull agent and Bear agent conduct independent adversarial debates over live Yahoo Finance data, cross-examined by a CIO Judge Agent to issue INVEST/WATCH/PASS verdicts with kill-criteria. Features immutable evidence ledgers, historical tracking, and comprehensive market trend analysis that dramatically accelerates research efficiency. Built with resilient AI fallbacks and complex state management.',
+ desc: [
+   'Architected a production-grade multi-agent ecosystem using LangGraph, simulating a full-fledged institutional equity research desk.',
+   'Designed an adversarial debate architecture where a Bull Agent and Bear Agent autonomously fetch live Yahoo Finance data, formulate opposing investment thesis, and debate them in real-time.',
+   'Implemented a CIO Judge Agent that cross-examines the debate, applying strict kill-criteria to issue definitive INVEST/WATCH/PASS verdicts, supported by immutable evidence ledgers in MongoDB.'
+ ],
  tech: ['LangGraph JS', 'Gemini 1.5 Pro', 'React', 'MongoDB'],
  image: '/assets/project_orion_new.png',
  link: 'https://orion-kappa-nine.vercel.app',
@@ -18,7 +22,11 @@ const projects = [
  {
  title: 'CodeX Arena',
  subtitle: 'Real-Time 1v1 Coding Platform',
- desc: 'Highly scalable competitive coding arena. Supports live matchmaking, synchronized WebSockets, strict anti-cheat (tab switch, fullscreen enforcement), Elo-based ranking, and live code execution via JDoodle against hidden test cases. Features a custom Monaco Editor implementation with intelligent syntax highlighting and auto-completion. Designed for seamless low-latency combat between competitive programmers worldwide.',
+ desc: [
+   'Engineered a highly scalable competitive coding platform focusing on low-latency synchronized execution and real-time state management.',
+   'Leveraged Socket.io for instantaneous matchmaking, live opponent keystroke tracking, and state synchronization across client nodes.',
+   'Integrated a custom Monaco Editor paired with the JDoodle API to execute code against hidden test cases securely. Enforced strict anti-cheat mechanisms (tab-switch tracking, fullscreen enforcement) and a mathematical Elo-based ranking system for competitive integrity.'
+ ],
  tech: ['React', 'Socket.io', 'Node.js', 'JDoodle API'],
  image: '/assets/project_codex_new.png',
  link: 'https://codex-arena.onrender.com',
@@ -27,7 +35,11 @@ const projects = [
  {
  title: 'CivicFix',
  subtitle: 'Community Issue Platform',
- desc: 'Backend-focused civic issue management system utilizing a strict state-machine-driven lifecycle (Reported -> Verified -> Assigned -> Resolved). Enforces rigorous role-based access control (RBAC) and immutable audit-logging for complete transparency and accountability. Integrated geographic mapping ensures issues are routed to correct municipal sectors instantly, drastically reducing response times for critical civic maintenance.',
+ desc: [
+   'Built a backend-heavy civic governance system revolving around a strict, state-machine-driven issue lifecycle (Reported -> Verified -> Assigned -> Resolved).',
+   'Designed an audit-first backend architecture ensuring that every status update creates an append-only immutable action log, establishing absolute transparency and operational accountability without hard-deletes.',
+   'Implemented robust JWT-based Role-Based Access Control (RBAC), strictly segregating privileges between Citizens, Field Officers, Supervisors, and Admins at the API gateway level.'
+ ],
  tech: ['Node.js', 'MongoDB', 'JWT RBAC', 'React'],
  image: '/assets/project_civicfix_new.png',
  link: 'https://civicfix-frontend02.onrender.com',
@@ -36,7 +48,11 @@ const projects = [
  {
  title: 'LifeLink',
  subtitle: 'Privacy-First Blood Donation',
- desc: 'A secure, gamified blood donation network. Features a privacy-first directory, real-time emergency broadcasts via $centerSphere MongoDB geo-queries (50km radius), concurrency control to prevent multiple donors, and a medical cooldown system to ensure donor safety. Built to scale across massive metropolitan areas, directly saving lives by connecting urgent patients with eligible donors within minutes of a request being broadcasted.',
+ desc: [
+   'Developed a scalable, privacy-first blood donation network designed to handle concurrent emergency broadcast operations.',
+   'Utilized MongoDB geospatial queries ($centerSphere) to broadcast real-time emergency requests instantly to eligible donors within a 50km radius of the incident.',
+   'Engineered critical medical constraint logic at the database level, enforcing strict cooldown periods to ensure donor safety and implementing transaction-level concurrency control to prevent multiple donors from accepting the same emergency.'
+ ],
  tech: ['Laravel 11', 'MongoDB Atlas', 'Tailwind', 'PHP'],
  image: '/assets/project_lifelink_new.png',
  link: 'https://lifelink-1-h40a.onrender.com',
@@ -45,7 +61,11 @@ const projects = [
  {
  title: 'Expense Tracker',
  subtitle: 'Flatmate Expense & Reconciliation',
- desc: 'Production-ready Next.js 14 app for complex shared expenses. Implements time-travel membership boundaries (join/leave date constraints), transparent multi-currency conversions, anomaly review queues for messy CSV imports, and an optimal debt settlement engine. Advanced algorithmic processing ensures minimum transactions are required to settle all debts amongst large friend groups, alongside gorgeous data visualization graphs.',
+ desc: [
+   'Architected a production-ready financial reconciliation engine capable of untangling complex, multi-currency shared expenses amongst dynamic friend groups.',
+   'Built advanced time-travel membership logic, strictly enforcing join/leave date boundaries to prevent users from being billed for expenses incurred when they were not active members.',
+   'Implemented an optimal debt settlement algorithm (Graph Traversal) that mathematically minimizes the total number of transactions required to settle all outstanding balances, alongside robust CSV import sanitization queues.'
+ ],
  tech: ['Next.js 14', 'Prisma', 'PostgreSQL', 'Tailwind v4'],
  image: '/assets/project_expense_new.png',
  link: 'https://expense-tracker-eight-nu-64.vercel.app',
@@ -54,7 +74,11 @@ const projects = [
  {
  title: 'DevPrep',
  subtitle: 'AI Interview Preparation Platform',
- desc: 'AI-powered platform parsing resumes against job descriptions to identify skill gaps and generate personalized study plans. Features precise match scoring, technical/behavioral question generation via Google Gemini API, secure JWT Auth, rate-limiting, and an elegant React interface. Helps candidates secure their dream jobs by simulating highly accurate mock interviews that adapt to the specific nuances of modern software engineering roles.',
+ desc: [
+   'Developed an intelligent, context-aware interview preparation suite that bridges the gap between candidate resumes and raw job descriptions.',
+   'Integrated the Claude/Gemini API to programmatically parse PDF resumes against JD embeddings, generating precise match scoring, skill gap identification, and highly specific technical/behavioral interview questions.',
+   'Hardened the backend with production-grade security, including route-level rate limiting against brute-force attacks, secure Google OAuth 2.0 flows, and robust JWT access/refresh token rotation.'
+ ],
  tech: ['React.js', 'Gemini AI', 'OAuth 2.0', 'Express'],
  image: '/assets/project_devprep_new.png',
  link: 'https://dev1prep.onrender.com',
@@ -63,7 +87,11 @@ const projects = [
  {
  title: 'Bill Quill',
  subtitle: 'Professional Invoice Generator',
- desc: 'A full-stack invoice management system automating customer billing and reporting. Engineered dynamic invoice generation with printable formats, XML downloads, and automated monthly Excel reporting. Built on an Express.js backend with structured MongoDB data modeling. Ensures flawless financial tracking, tax compliance preparation, and incredibly swift PDF invoice rendering for modern freelancing and agency operations.',
+ desc: [
+   'Engineered a comprehensive financial SaaS application focused on automating client billing, reporting workflows, and transaction structuring.',
+   'Designed modular REST APIs in Express.js supporting highly dynamic invoice generation, including instant printable formats, secure XML data exports, and automated Excel monthly report synthesis.',
+   'Structured the MongoDB data modeling to ensure flawless relational tracking between clients, recurring line items, tax compliance configurations, and historical payments.'
+ ],
  tech: ['Node.js', 'Express', 'MongoDB', 'TailwindCSS'],
  image: '/assets/project_billquill_new.png',
  link: 'https://bill-quill-frontend.onrender.com',
@@ -162,13 +190,18 @@ function ProjectCard({ project, index }) {
   </AnimatePresence>
   </div>
 
-  <div className="absolute inset-0 backface-hidden bg-white/30 dark:bg-black/40 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] p-4 md:p-10 flex flex-col justify-between overflow-y-auto rounded-[2rem]" style={{ transform: 'rotateY(180deg)' }}>
+  <div className="absolute inset-0 backface-hidden bg-white/30 dark:bg-black/40 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] p-5 md:p-10 flex flex-col justify-between overflow-y-auto rounded-[2rem]" style={{ transform: 'rotateY(180deg)' }}>
   <div>
-  <h4 className="text-2xl md:text-3xl font-serif text-accent font-black uppercase mb-2">{project.title}</h4>
-  <p className="font-sans font-bold text-xs uppercase mb-4 md:mb-6 text-black dark:text-white pb-2 inline-block">{project.subtitle}</p>
-  <p className="text-xs md:text-sm mb-4 md:mb-8 font-sans font-medium text-black dark:text-white leading-relaxed text-justify">
-  {project.desc}
-  </p>
+  <h4 className="text-2xl md:text-3xl font-serif text-accent font-black uppercase mb-1">{project.title}</h4>
+  <p className="font-sans font-bold text-[10px] md:text-xs uppercase mb-4 md:mb-6 text-black dark:text-white pb-2 inline-block border-b border-black/10 dark:border-white/10">{project.subtitle}</p>
+  
+  <div className="flex flex-col gap-3 md:gap-4 mb-6 md:mb-8">
+    {project.desc.map((paragraph, i) => (
+      <p key={i} className="text-xs md:text-sm font-sans font-medium text-black dark:text-white/90 leading-relaxed text-justify">
+        {paragraph}
+      </p>
+    ))}
+  </div>
   </div>
   <div>
   <div className="flex flex-wrap gap-2 mb-8">
