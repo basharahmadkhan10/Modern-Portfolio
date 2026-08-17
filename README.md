@@ -1,58 +1,51 @@
-# 🎬 Cinematic Story Portfolio
+# Modern Portfolio Architecture
 
-**🔗 Live Demo:** [https://bash-portfolio-sandy.vercel.app/](https://bash-portfolio-sandy.vercel.app/)
+A highly optimized, aesthetically driven personal portfolio built with React and Tailwind CSS. The design language follows a strict, dark-matte cinematic approach inspired by ancient Japanese aesthetics and modern minimalism.
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer&logoColor=blue)
+## Core Technologies
 
-A premium, highly interactive full-stack developer portfolio designed to stand out. Moving away from standard templates, this portfolio brings a cinematic, anime-inspired aesthetic to the web.
+- **Framework**: React (Vite)
+- **Styling**: Tailwind CSS (Custom thematic configurations)
+- **Animation**: Framer Motion & GSAP (ScrollTrigger)
+- **State Management**: React Context API (Theme, Audio, Interactions)
 
-## ✨ Key Features
+## Architecture Overview
 
-- **Immersive Aesthetics:** Dynamic Day/Night mode toggling that entirely shifts the mood of the site, complete with falling cherry blossoms and atmospheric background music.
-- **Advanced Animations:** Utilizes Framer Motion and GSAP for buttery smooth reveal animations, horizontal scrolling sections, and 3D interactive project cards.
-- **Smooth Scrolling:** Integrated with Lenis for a fluid, weightless scrolling experience across all devices.
-- **Mobile Optimized:** Fully responsive design ensuring perfect layouts on standard desktops, tablets, and mobile devices (like the S23/S24 Ultra).
-- **Clean Architecture:** Built on Vite + React for lightning-fast performance and hot module replacement.
+The codebase is strictly modularized to separate core functionality from visual sections:
 
-## 🛠️ Tech Stack
-
-- **Framework:** React.js (Vite)
-- **Styling:** Tailwind CSS
-- **Animation:** Framer Motion, GSAP
-- **Scroll Hijacking (Smooth Scroll):** Lenis
-
-## 🚀 Getting Started
-
-First, clone the repository and install the dependencies:
-
-```bash
-git clone https://github.com/basharahmadkhan10/Story_Portfolio.git
-cd Story_Portfolio
-npm install
+```
+src/
+├── components/       # Reusable, logic-heavy UI elements (Cursor, Audio, Theme Toggles)
+├── context/          # Global state providers (AudioContext, ThemeContext)
+├── sections/         # Distinct page sections (Hero, ThePath, TheBuild, Stack)
+├── index.css         # Global styling and base Tailwind directives
+└── App.jsx           # Root layout and component composition
 ```
 
-Then, run the development server:
+## Performance & UX Considerations
 
-```bash
-npm run dev
-```
+- **Scroll Hijacking (GSAP)**: Horizontal scroll sections (`The Build`) are pinned and scrubbed natively via GSAP for a 60fps cinematic feel.
+- **Audio Context**: Implemented a resilient audio provider that bypasses strict browser autoplay policies by attaching one-time event listeners on initial user interaction.
+- **Custom Cursor**: A global framer-motion driven cursor that dynamically reacts to hover states across the application without layout shifts.
+- **Render Optimization**: Components rely on `useInView` hooks to defer animations until elements enter the viewport, reducing off-screen paint calculations.
 
-Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
+## Local Setup
 
-## 📦 Deployment
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-This project is fully optimized for production. To build the project:
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-```bash
-npm run build
-```
+## Development Guidelines
 
-The output will be generated in the `dist/` folder, which can be deployed to Vercel, Netlify, or Render.
+- **Typography**: Strictly adhere to `Cormorant Garamond` (font-serif) for body and descriptive text to maintain the editorial, old-world aesthetic.
+- **Modularity**: Any new section must be created inside `/sections` and injected sequentially in `App.jsx`.
+- **Animations**: Favor Framer Motion for micro-interactions (hover, click) and GSAP exclusively for complex scroll-linked timelines.
 
-## 👨‍💻 Author
-
-**Bashar Ahmad Khan**
-- LinkedIn: [basharkhan24k](https://linkedin.com/in/basharkhan24k)
-- GitHub: [@basharahmadkhan10](https://github.com/basharahmadkhan10)
+---
+*Designed for precision, scalability, and impact.*
