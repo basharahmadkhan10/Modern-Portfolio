@@ -73,6 +73,7 @@ const projects = [
 
 function ProjectCard({ project, index }) {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [showTutorial, setShowTutorial] = useState(index === 0);
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { margin: "-20%" });
 
@@ -81,6 +82,15 @@ function ProjectCard({ project, index }) {
       setIsFlipped(false);
     }
   }, [isInView, isFlipped]);
+
+  useEffect(() => {
+    if (showTutorial && isInView) {
+      const timer = setTimeout(() => {
+        setShowTutorial(false);
+      }, 3500);
+      return () => clearTimeout(timer);
+    }
+  }, [showTutorial, isInView]);
 
 
   useEffect(() => {
@@ -103,7 +113,10 @@ function ProjectCard({ project, index }) {
   </h3>
   <div
   className="relative aspect-video cursor-pointer group w-full max-w-4xl mx-auto"
-  onClick={() => setIsFlipped(!isFlipped)}
+  onClick={() => {
+    setIsFlipped(!isFlipped);
+    setShowTutorial(false);
+  }}
   >
   <motion.div
   className="w-full h-full relative transform-style-3d transition-transform duration-700"
@@ -118,20 +131,35 @@ function ProjectCard({ project, index }) {
   onError={(e) => { e.target.src = '/assets/bg_night_1.png' }}
   />
   
-  {/* Inspect Guide - Only on first card and only before flipping */}
-  {index === 0 && !isFlipped && (
-    <motion.div 
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 1, duration: 0.5 }}
-      className="absolute inset-x-0 bottom-12 z-20 flex flex-col items-center justify-center pointer-events-none"
-    >
-      <div className="bg-black/60 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 flex items-center gap-3 animate-bounce">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-accent"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-        <span className="text-xs font-sans font-bold text-white uppercase tracking-widest">Click to Flip & Inspect</span>
-      </div>
-    </motion.div>
-  )}
+  {/* Modern Tutorial Overlay */}
+  <AnimatePresence>
+    {showTutorial && !isFlipped && (
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.8 }}
+        className="absolute inset-0 z-30 bg-black/70 backdrop-blur-sm rounded-[2rem] flex flex-col items-center justify-center"
+      >
+        <motion.div
+          animate={{ scale: [1, 0.85, 1], y: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          className="text-white mb-6 drop-shadow-2xl"
+        >
+          {/* Hand clicking icon */}
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/>
+            <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/>
+            <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/>
+            <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+          </svg>
+        </motion.div>
+        <p className="font-sans font-bold text-sm md:text-xl text-white uppercase tracking-[0.2em] drop-shadow-md text-center px-4">
+          Tap Card to Flip
+        </p>
+      </motion.div>
+    )}
+  </AnimatePresence>
   </div>
 
   <div className="absolute inset-0 backface-hidden bg-white/30 dark:bg-black/40 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] p-4 md:p-10 flex flex-col justify-between overflow-y-auto rounded-[2rem]" style={{ transform: 'rotateY(180deg)' }}>
